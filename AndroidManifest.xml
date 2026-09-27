@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.codeandart.systemmonitor">
+
+    <!-- Sistem bilgisi okuma izinleri -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.GET_APP_OPS_STATS" />
+
+    <!-- Sistem izleme ve performans -->
+    <uses-permission android:name="android.permission.DUMP" />
+    <uses-permission android:name="android.permission.REBOOT" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_EXTERNAL_STORAGE" />
+
+    <!-- Cihaz bilgisi -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_DEVICE_STATE" />
+
+    <!-- Kernel ve sistem durumu -->
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidSystemMonitor"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AndroidSystemMonitor.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Background servis - sistem izleme -->
+        <service
+            android:name=".service.SystemMonitorService"
+            android:enabled="true"
+            android:exported="false"
+            android:foreground="true"
+            android:permission="android.permission.FOREGROUND_SERVICE" />
+
+        <!-- Kernel log okuma servisi -->
+        <service
+            android:name=".service.KernelLogService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Deep monitoring servisi (root gerekli) -->
+        <service
+            android:name=".service.DeepMonitoringService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

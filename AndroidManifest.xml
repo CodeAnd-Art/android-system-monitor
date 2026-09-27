@@ -23,8 +23,16 @@
     <!-- Kernel ve sistem durumu -->
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
 
+    <!-- Biyometrik -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <!-- Güvenlik -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER" />
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -43,7 +51,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Background servis - sistem izleme -->
+        <!-- Background servisleri -->
         <service
             android:name=".service.SystemMonitorService"
             android:enabled="true"
@@ -51,13 +59,11 @@
             android:foreground="true"
             android:permission="android.permission.FOREGROUND_SERVICE" />
 
-        <!-- Kernel log okuma servisi -->
         <service
             android:name=".service.KernelLogService"
             android:enabled="true"
             android:exported="false" />
 
-        <!-- Deep monitoring servisi (root gerekli) -->
         <service
             android:name=".service.DeepMonitoringService"
             android:enabled="true"

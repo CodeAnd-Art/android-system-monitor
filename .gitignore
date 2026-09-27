@@ -1,0 +1,41 @@
+# Gradle
+.gradle/
+build/
+*.apk
+*.aar
+*.ap_
+*.dex
+*.class
+*.jar
+*.zip
+*.tar.gz
+*.rar
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/
+
+# Android
+local.properties
+.classpath
+.project
+.settings/
+*.jks
+key.properties
+
+# Output
+out/
+*.log
+*.stackdump
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
